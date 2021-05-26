@@ -1,11 +1,14 @@
 #!/bin/sh
+
+repo_path=$1
+
 echo "Starting the stack...."
-docker-compose -f ~/fivetran/hackathon-2021/elk-with-filebeat/docker-compose.yml up -d
+docker-compose -f $repo_path/docker-compose.yml up -d
 
 while [[ "$response" != *'"key":"logstash'* ]]
 do
    response="$(curl -X POST "http://localhost:9200/*/_search?ignore_unavailable=true" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d '{"size":0,"aggs":{"indices":{"terms":{"field":"_index","size":200}}}}')"
-   echo "Wating...."
+   echo "Waiting...."
    sleep 30
 done
 
