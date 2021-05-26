@@ -15,7 +15,7 @@ rm -rfv $repo_path/mylog/*
 printf "\nCleaning Filebeat Registry dir to make space for new log files\n"
 rm -rfv registry/*
 
- include the end_date in the query
+# include the end_date in the query
 end_date=$(date -j -v +1d -f "%Y-%m-%d" "$end_date" +%Y-%m-%d)
 d="$start_date"
 # loop over the date range
