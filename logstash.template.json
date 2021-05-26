@@ -5,21 +5,5 @@
     ],
     "settings": {
         "number_of_shards": 1
-    },
-    "mappings": {
-        "properties": {
-            "name": {
-                "type": "keyword"
-            },
-            "class": {
-                "type": "keyword"
-            },
-            "state": {
-                "type": "integer"
-            },
-            "@timestamp": {
-                "type": "date"
-            }
-        }
     }
 }
