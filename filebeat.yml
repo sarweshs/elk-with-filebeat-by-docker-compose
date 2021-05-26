@@ -10,3 +10,6 @@ output.logstash:
 processors:
   - add_docker_metadata:
       host: "unix:///host_docker/docker.sock"
+
+path:
+  data: /var/lib/beat

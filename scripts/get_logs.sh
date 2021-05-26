@@ -11,6 +11,9 @@ endDate=$6
 printf "\nCleaning the mylog/ dir to make space for new log files\n"
 rm -rfv mylog/*
 
+printf "\nCleaning Filebeat Registry dir to make space for new log files\n"
+rm -rfv registry/*
+
 # include the endDate in the query
 endDate=$(date -j -v +1d -f "%Y-%m-%d" "$endDate" +%Y-%m-%d)
 d="$startDate"

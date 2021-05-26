@@ -80,6 +80,7 @@ services:
       - /var/lib/docker:/host_docker/var/lib/docker
       - ./mylog:/usr/share/filebeat/mylog
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./registry:/var/lib/beat
     command: ["--strict.perms=false"]
     ulimits:
       memlock:
