@@ -7,7 +7,7 @@ docker-compose -f $repo_path/docker-compose.yml up -d
 
 while [[ "$response" != *'"key":"logstash'* ]]
 do
-   response="$(curl -X POST "http://localhost:9200/*/_search?ignore_unavailable=true" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d '{"size":0,"aggs":{"indices":{"terms":{"field":"_index","size":200}}}}')"
+   response="$(curl -sX POST "http://localhost:9200/*/_search?ignore_unavailable=true" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d '{"size":0,"aggs":{"indices":{"terms":{"field":"_index","size":200}}}}')"
    echo "Waiting...."
    sleep 30
 done
@@ -17,7 +17,7 @@ sleep 30
 
 echo "Creating Index....."
 
-data="$(curl -X POST "http://localhost:5601/api/saved_objects/index-pattern/logstash" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d'
+data="$(curl -sX POST "http://localhost:5601/api/saved_objects/index-pattern/logstash" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d'
 {
   "attributes": {
     "title": "logstash-*",
