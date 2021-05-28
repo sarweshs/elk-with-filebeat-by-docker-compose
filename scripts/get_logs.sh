@@ -8,11 +8,15 @@ start_date=$5
 end_date=$6
 repo_path=$7
 
-# clean the /mylog dir to make space for new log files
-printf "\nCleaning the mylog/ dir to make space for new log files\n"
-rm -rfv $repo_path/mylog/*
+# clean or create the /mylog dir
+if [ -d "$repo_path/mylog" ]; then
+  printf "\nCleaning the mylog/ dir to make space for new log files...\n"
+  rm -rfv $repo_path/mylog/*
+else
+  mkdir $repo_path/mylog
+fi
 
-printf "\nCleaning Filebeat Registry dir to make space for new log files\n"
+printf "\nCleaning Filebeat Registry dir to make space for new log files...\n"
 rm -rfv registry/*
 
 # include the end_date in the query
