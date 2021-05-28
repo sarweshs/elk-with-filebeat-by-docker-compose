@@ -30,4 +30,5 @@ echo "Index Created....."
 
 echo "Opening Browser....."
 
-open http://localhost:5601/app/kibana#/discover
+#open http://localhost:5601/app/kibana#/discover
+open http://localhost:5601/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15y,to:now))&_a=(columns:!(),filters:!(),index:logstash,interval:auto,query:(language:kuery,query:''),sort:!(!(time,desc)))
