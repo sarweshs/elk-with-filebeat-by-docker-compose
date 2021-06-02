@@ -1,2 +1,4 @@
 .DS_Store
 mylog/*
+registry/
+registry/**/*log.json
